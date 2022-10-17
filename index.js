@@ -1,3 +1,4 @@
+import cors from 'cors';
 import dotenv from 'dotenv';
 import express from 'express';
 import mongoose from 'mongoose';
@@ -10,6 +11,15 @@ const PORT = process.env.PORT || 5001;
 const DB_USER = process.env.DB_USER;
 const DB_PASSWORD = process.env.DB_PASSWORD;
 const DB_NAME = process.env.DB_NAME;
+
+// Middleware
+app.use(cors());
+app.use(express.json());
+
+// Server Test
+app.get('/', (req, res) => {
+  res.json({ message: 'All is fine.' });
+});
 
 async function start() {
   try {
